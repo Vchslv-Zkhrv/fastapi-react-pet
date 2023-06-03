@@ -25,3 +25,30 @@ async def create_user(
         raise _fastapi.HTTPException(status_code=400, detail="Email already in use")
 
     return await _services.create_user(user, db)
+
+
+@app.post("/api/token")
+async def generate_token(
+    form_data: _security.OAuth2PasswordRequestForm = _fastapi.Depends(),
+    db: _orm.Session = _fastapi.Depends(_services.get_db)
+):
+    user = await _services.authentificate_user(
+        email=form_data.username,
+        password=form_data.password,
+        db=db
+    )
+
+    if not user:
+        raise _fastapi.HTTPException(
+            status_code=401,
+            detail="Invalid credentials"
+        )
+
+    return await _services.create_token(user)
+
+
+@app.get("/api/users/me", response_model=_schemas.User)
+async def get_user(
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user)
+):
+    return user
