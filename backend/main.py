@@ -101,3 +101,8 @@ async def update_lead(
 ):
     await _services.update_lead(lead_id, lead, user, db)
     return {"message": "Succefully Updated"}
+
+
+@app.get("/api")
+async def root():
+    return {"message": "Hello"}
