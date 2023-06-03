@@ -8,10 +8,11 @@ class _UserBase(_pydantic.BaseModel):
     email: str
 
 
-class UserCreate(_pydantic.BaseModel):
+class UserCreate(_UserBase):
 
     hashed_password: str
 
+    # this will not be added to response
     class Config:
         orm_mode = True
 
@@ -42,7 +43,7 @@ class Lead(_LeadBase):
     id: int
     owner_id: int
     date_created: _dt.datetime
-    date_last_updated: _dt.datetimes
+    date_last_updated: _dt.datetime
 
     class Config:
-        orm_mode=  True
+        orm_mode = True
