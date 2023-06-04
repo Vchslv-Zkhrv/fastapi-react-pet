@@ -3,6 +3,7 @@ import Register from "./components/Register";
 import Header from "./components/Header";
 import { UserContext } from "./context/userContext";
 import Login from "./components/Login";
+import Table from "./components/Table";
 
 const App = () => {
 
@@ -38,7 +39,7 @@ const App = () => {
                         </div>
                     )
                     : (
-                        <p>Table</p>
+                        <Table/>
                     )
                 }
             </div>

@@ -7,7 +7,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMesage, setErrorMessage] = useState("");
+    const [, setErrorMessage] = useState("");
     const [, setToken] = useContext(UserContext);
 
     const submitLogin = async () => {
