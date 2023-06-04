@@ -84,7 +84,6 @@ async def get_current_user(
         payload = _jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
         user = db.query(_models.User).get(payload["id"])
     except Exception as e:
-        logger.error(e)
         raise _fastapi.HTTPException(
             status_code=401,
             detail="Wrong email or passowrd`"
