@@ -80,7 +80,7 @@ const Register = () => {
                 </div>
                 <ErrorMessage message={errorMesage}></ErrorMessage>
                 <br />
-                <button className="button is-primary" type="Submit">Submit</button>
+                <button className="button is-primary" type="Submit">Register</button>
             </form>
         </div>
     );
